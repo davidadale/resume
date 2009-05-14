@@ -18,6 +18,7 @@
             <exclude org="commons-logging" module="commons-logging" name="*" type="*" ext="*" conf="" matcher="exact"/>
             <exclude org="javax.servlet" module="servlet-api" name="*" type="*" ext="*" conf="" matcher="exact"/>
         </dependency>
+        <dependency org="javax.mail" name="mail" rev="1.4"/>
         <dependency org="hsqldb" name="hsqldb" rev="1.8.0.5" conf="runtime"/>
         <!--
         <dependency org="mysql" name="mysql-connector-java" rev="5.1.6" conf="runtime"/>
