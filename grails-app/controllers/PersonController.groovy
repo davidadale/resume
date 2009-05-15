@@ -39,17 +39,17 @@ class PersonController {
 		}
 		
 		// determine what tab should be selected on the home page
-		def tabName = params.selectedTab?params.selectedTab:"skill"
+		def tabName = params.selectedTab?params.selectedTab:"overview"
 		String tabSelected = "${tabName}TabSelected"
 		log.debug "Tab that will be selected is ${tabSelected}"
-
 
 		// setup the model data for the home page veiw
 		log.debug "setting up model for view"
 		def model = [  person : person,
                        resumes: person?.resumes,
                        skills: person?.skills,
-                       projects: person?.projects,
+                       experiences: person?.experiences,
+                       overview:person?.overview,
                        education: person?.education]
 
 		// additional attribute with the name of the curent selected tab and the value of ${true}
@@ -71,6 +71,23 @@ class PersonController {
     def showCentricResume = {
         Resume resume = Resume.get( params.id )
         render(view:"centric",model:[resume:resume])
+    }
+
+    def addOverview = {
+        def person = Person.get(params.id)
+        if (person) {
+            if (person.overview == null) {
+                println 'adding new overview'
+                person.overview = new ResumeOverview()
+                person.overview.person = person
+                println 'saving overview'
+                person.overview.summary = ''
+                person.overview.save()
+                println 'overview id ' + person.overview.id
+            }
+            person.save()
+        }
+        redirect(controller:"resumeOverview", action:"edit", id:person.overview.id)
     }
 
     def createResumeFlow = {

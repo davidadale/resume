@@ -10,7 +10,10 @@ class Person implements Serializable, Comparable<Person>{
       root false
   }
 
+    String title
+    String suffix
     String firstName
+    String middleName
     String lastName
     String email
     String phoneNumber
@@ -21,7 +24,12 @@ class Person implements Serializable, Comparable<Person>{
 
     String username
 
-    static hasMany = [projects: Project,education:Education,skills:Skill,resumes:Resume]
+    List experiences
+
+    ResumeOverview overview
+
+    static hasMany = [experiences:Experience, projects: Project,education:Education,skills:Skill,resumes:Resume]
+
     static transients = ["fullName"]
 
 
