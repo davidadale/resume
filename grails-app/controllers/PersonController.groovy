@@ -78,12 +78,7 @@ class PersonController {
         if (person) {
             if (person.overview == null) {
                 println 'adding new overview'
-                person.overview = new ResumeOverview()
-                person.overview.person = person
-                println 'saving overview'
-                person.overview.summary = ''
-                person.overview.save()
-                println 'overview id ' + person.overview.id
+                person.addOverview(new ResumeOverview())
             }
             person.save()
         }

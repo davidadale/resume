@@ -37,10 +37,17 @@ class Experience implements Serializable, Comparable<Experience> {
     
     static hasMany = [highlights:Highlight];
     
-    // TODO: These constraints not appropriate going forward.  Need to think about what to do here.
-    //static constraints = {
-    //    role(inList:["Business Analyst","Designer", "Developer", "Team Lead", "Project Manager"] )
-    //}
+    
+    static constraints = {
+        // TODO: These constraints not appropriate going forward.  Need to think about what to do here.
+        // role(inList:["Business Analyst","Designer", "Developer", "Team Lead", "Project Manager"] )
+        companyName(nullable: true)
+        titleLine(nullable: true)
+        summary(nullable: true)
+        dateCompleted(nullable: true)
+        ongoing(nullable: true)
+        summary(nullable: true)
+    }
 
     static mapping = {
         columns{

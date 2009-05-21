@@ -4,10 +4,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
-        <title>Edit Overview</title>
+        <title>Resume - Overview</title>
     </head>
     <body>
         <div class="body">
+            <div class="dialog">
             <h1>Overview</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
@@ -19,8 +20,7 @@
             </g:hasErrors>
             <g:form method="post" name="overview_form" action="save" >
                 <input type="hidden" name="id" id="id" value="${overview?.id}" />
-                <div class="dialog">
-                  
+                                 
 		   <div class="clear" ></div>		   
 		   <div class="entryfield">
 			   <label class="entryLabel" for="summary">Summary:</label>
@@ -41,12 +41,8 @@
                         </div>
                      </g:each>
                   
-                            <%/* this newValueBlock only works if javascript enabled.  if javascript is disabled,
-                                 then the 'New' hyperlink above does HTTP GET, resulting in page reload with the new highlight already
-                                 added to the overview.  Non-javascript user would then be using the 'Save' link above.
-                                 But if javascript is enabled, we do the save with an ajax call below.
-                            */%>
-                            <div id="ajaxmsg" style="display:none;"></div>
+                       
+                           <div id="ajaxmsg" style="display:none;"></div>
 
 			   <div id="newValueBlock" style="display:none;">
                                <div class="entryfield value">
@@ -59,14 +55,14 @@
                                </div>                      
                                    
 		           </div>
-		   </div>
+		   
                 <div class="buttons">
                     <span class="button"><g:actionSubmit class="save" value="Save" /></span>
                 </div>
 		<div class="clear" style="height:5em;"> </div>
             </g:form>
-        </div>
-
+        </div> <!-- dialog -->
+      </div>  <!--body -->
                       <script type="text/javascript" language="javascript">
                                       
                                    </script>

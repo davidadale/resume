@@ -32,6 +32,11 @@ class Person implements Serializable, Comparable<Person>{
 
     static transients = ["fullName"]
 
+    static constraints = {
+        middleName(nullable: true)
+        title(nullable: true)
+        suffix(nullable: true)
+    }
 
     public void setSelectedSkillsById(List ids){
         this.skills = ids.collect{

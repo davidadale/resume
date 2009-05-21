@@ -12,6 +12,14 @@
   margin:10px 10px;
 }
 
+.expsm table{
+    border:none;
+}
+
+.expsm label {
+    font-weight:bold;
+}
+
 .expdet {
   margin-left:15px;
 }
