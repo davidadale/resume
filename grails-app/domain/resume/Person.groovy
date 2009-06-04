@@ -26,9 +26,26 @@ class Person implements Serializable, Comparable<Person>{
 
     List experiences
 
+    /*List certs*/
+
+    List awards
+
+    List licenses
+
+    List memberships
+    
     ResumeOverview overview
 
-    static hasMany = [experiences:Experience, projects: Project,education:Education,skills:Skill,resumes:Resume]
+    static hasMany = [experiences:Experience,
+        projects: Project,
+        education:Education,
+        skills:Skill,
+        resumes:Resume,
+        certs:Certification,
+        awards:Award,
+        licenses:License,
+        memberships:Membership
+    ]
 
     static transients = ["fullName"]
 
@@ -36,6 +53,10 @@ class Person implements Serializable, Comparable<Person>{
         middleName(nullable: true)
         title(nullable: true)
         suffix(nullable: true)
+        certs(nullable: true)
+        awards(nullable: true)
+        licenses(nullable: true)
+        memberships(nullable:true)
     }
 
     public void setSelectedSkillsById(List ids){

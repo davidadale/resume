@@ -31,6 +31,8 @@ class PersonController {
 		Person person = c.get{
 			eq("username", subject.principal)
 			fetchMode('resumes',FM.EAGER)
+                        fetchMode('experiences', FM.EAGER)
+                        fetchMode('certs', FM.EAGER)
 		}
 		
 		if( !person ){
@@ -49,6 +51,8 @@ class PersonController {
                        resumes: person?.resumes,
                        skills: person?.skills,
                        experiences: person?.experiences,
+                       certs:person?.certs,
+                       licenses:person?.licenses,
                        overview:person?.overview,
                        education: person?.education]
 
@@ -59,6 +63,8 @@ class PersonController {
 
 		// render view
 		log.debug "rendering person show view"
+
+
         render ( view: "show", model:model )
 
         
