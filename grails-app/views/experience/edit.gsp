@@ -8,7 +8,7 @@
     </head>
     <body>
         <div class="body">
-            <h1>Experience</h1>
+            <h2>Experience</h2>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>

@@ -64,7 +64,7 @@
           <div id="overview" class="section" style="display:none;">
             <h3>Overview</h3>
             <g:if test="${overview == null}">
-              <div>
+              <div class="buttons">
                 <g:link controller="person" action="addOverview" params="['id':person.id]">Add Overview</g:link>
               </div>
             </g:if>
@@ -101,7 +101,7 @@
           <a name="skillsa"></a>
           <div id="skills" class="section" style="display:none;">
             <h3>Skills</h3>
-            <div align="right">
+            <div  class="buttons">
               <g:link class="edit" action="editSkills" id="${person.id}">Select Skills</g:link><br/>
             </div>
             <div style="height:200px;">
@@ -118,7 +118,7 @@
           <a name="experiencea"></a>
           <div id="experience" class="section" style="display:none;">
             <h3>Experience</h3>
-            <div>
+            <div class="buttons">
               <g:link controller="experience" action="create" params="['person.id':person.id]">Add Experience</g:link>
             </div>
 
@@ -159,7 +159,7 @@
           <a name="educationa"></a>
           <div id="education" class="section" style="display:none;">
             <h3>Education</h3>
-            <div>
+            <div class="buttons">
               <g:link controller="education" action="create" params="['person.id':person.id]">Add Education</g:link>
             </div>
               <g:each in="${education}" status="i" var="education">
@@ -192,7 +192,7 @@
          <a name="certificationsa"></a>
           <div id="certifications" class="section" style="display:none;">
             <h3>Certifications</h3>
-            <div>
+            <div class="buttons">
               <g:link controller="certification" action="create" params="['personId':person.id]">Add Certification</g:link>
             </div>
 
@@ -233,7 +233,7 @@
           <a name="licensesa"></a>
           <div id="licenses" class="section" style="display:none;">
             <h3>Licenses</h3>
-            <div>
+            <div class="buttons">
               <g:link controller="license" action="create" params="['personId':person.id]">Add License</g:link>
             </div>
             <g:each in="${licenses}" status="i" var="lic">
@@ -261,7 +261,7 @@
           <a name="membershipsa"></a>
           <div id="memberships" class="section" style="display:none;">
             <h3>Memberships</h3>
-            <div>
+            <div class="buttons">
               <g:link controller="membership" action="create" params="['personId':person.id]">Add Membership</g:link>
             </div>
             <g:each in="${memberships}" status="i" var="memb">
@@ -289,7 +289,7 @@
            <a name="awardsa"></a>
           <div id="awards" class="section" style="display:none;">
             <h3>Awards</h3>
-            <div>
+            <div class="buttons">
               <g:link controller="award" action="create" params="['personId':person.id]">Add Award</g:link>
             </div>
              <g:each in="${awards}" status="i" var="award">
@@ -321,7 +321,7 @@
             <a name="patentsa"></a>
           <div id="patents" class="section" style="display:none;">
             <h3>Patents</h3>
-            <div>
+            <div class="buttons">
               <g:link controller="patent" action="create" params="['personId':person.id]">Add Patent</g:link>
             </div>
             <g:each in="${patents}" status="i" var="pat">
@@ -350,7 +350,7 @@
             <a name="involvementa"></a>
           <div id="involvement" class="section" style="display:none;">
             <h3>Community Involvement</h3>
-            <div>
+            <div class="buttons">
               <g:link controller="involvement" action="create" params="['personId':person.id]">Add Involvement</g:link>
             </div>
           </div>
