@@ -16,7 +16,7 @@
     <div id="wrapper">
 
     <div id="header">
-        <g:link url="/resume" title="(It's all about ME... ok, and you too)"><span id="headerTitle">ResuMe</span></g:link>
+        <g:link url="/resume" title="It's all about ME... ok, and you too"><span id="headerTitle">ResuMe</span></g:link>
         <span id="headerRight">
           Welcome ${person?.firstName} |
 		  <g:link controller="auth" action="signOut">logout</g:link>

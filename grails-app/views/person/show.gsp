@@ -6,35 +6,37 @@
 </head>
 <body>
   <div class="body">
+
+    <g:if test="${flash.message}">
+      <div class="message clear">${flash.message}</div>
+    </g:if>
+    
     <div id="leftnav">
         <ul>
-          <li><a href="" onclick="javascript:return toggleDiv('indCI','contactInfo');">Contact Info <span id="indCI" class="ind">&#x2734</span></a>
+          <li id="indCI" style="background-color:#94db5e;"><a href="" onclick="javascript:return toggleDiv('indCI','contactInfo');">Contact Info</a>
                 </li>
-          <li><a href="" onclick="javascript:return toggleDiv('indOV','overview');">Overview <span class="ind" id="indOV">&#x2734</span></a></li>
+          <li id="indOV"><a href="" onclick="javascript:return toggleDiv('indOV','overview');">Overview</a></li>
 
-                <li><a href="" onclick="javascript:return toggleDiv('indSk', 'skills');">Skills </a><span class="ind" id="indSk"></span></li>
-                <li><a href="" onclick="javascript:return toggleDiv('indXp', 'experience');">Experience <span class="ind" id="indXp">&#x2734</span></a></li>
-                <li><a href="" onclick="javascript:return toggleDiv('indEd', 'education');">Education <span class="ind" id="indEd">&#x2734</span></a></li>
-                <li><a href="" onclick="javascript:return toggleDiv('indRef', 'references');">References <span class="ind" id="indRef">&#x2734</span></a></li>
-                <li><a href="" onclick="javascript:return toggleQualsLink();">
+                <li id="indSk"><a href="" onclick="javascript:return toggleDiv('indSk', 'skills');">Skills </a></li>
+                <li id="indXp"><a href="" onclick="javascript:return toggleDiv('indXp', 'experience');">Experience </a></li>
+                <li id="indEd"><a href="" onclick="javascript:return toggleDiv('indEd', 'education');">Education </a></li>
+                <li id="indRef"><a href="" onclick="javascript:return toggleDiv('indRef', 'references');">References</a></li>
+                <li><a href="" onclick="javascript:toggleQualsLink();return false;">
                     <span id="quals_header">&#x25B6;</span>&nbsp;Qualifications </a>
                   <ul id="quals" style="display:none;">
-                    <li>Publications</li>
-                    <li>Certifications</li>
-                    <li>Licenses</li>
-                    <li>Memberships</li>
-                    <li>Awards</li>
-                    <li>Patens</li>
-                    <li>Community Involvement</li>
-                    <li>Interests/Sites</li>
+                    <li id="indCert"><a href="" onclick="javascript:return toggleDiv('indCert', 'certifications');">Certifications</a></li>
+                    <li id="indPub"><a href="" onclick="javascript:return toggleDiv('indPub', 'publications');">Publications</a></li>
+                    <li id="indLic"><a href="" onclick="javascript:return toggleDiv('indLic', 'licenses');">Licenses</a></li>
+                    <li id="indMem"><a href="" onclick="javascript:return toggleDiv('indMem', 'memberships');">Memberships</a></li>
+                    <li id="indAwd"><a href="" onclick="javascript:return toggleDiv('indAwd', 'awards');">Awards</a></li>
+                    <li id="indPat"><a href="" onclick="javascript:return toggleDiv('indPat', 'patents');">Patents</a></li>
+                    <li id="indInv"><a href="" onclick="javascript:return toggleDiv('indInv', 'involvement');">Community Involvement</a></li>
+                    <li id="indInt"><a href="" onclick="javascript:return toggleDiv('indInt', 'interests');">Interests/Sites</a></li>
                   </ul>
                 </li>
         </ul>
       </div>
-    
-    <g:if test="${flash.message}">
-      <div class="message">${flash.message}</div>
-    </g:if>
+
 
     <div class="dialog flL">
 
@@ -46,23 +48,23 @@
             <span class="expsm-lt">
               <table><tbody>
                 <tr><td ><label>Full Name:</label></td><td>${person.fullName}</td></tr>
-                <tr><td ><label>Email:</label></td><td> ${fieldValue(bean:person, field:'email')}</td></tr>
+                <tr><td><label>Email:</label></td><td> ${fieldValue(bean:person, field:'email')}</td></tr>
                 <tr><td ><label>Phone Number:</label></td><td> ${fieldValue(bean:person, field:'phoneNumber')}</td></tr>
                 </tbody>
               </table>
             </span>
               <span class="expsm-rt"  style="vertical-align:bottom;">
-                 <g:link id="${person.id}" action="edit" controller="person">Edit</g:link>
+                 <g:link id="${person.id}" action="edit" controller="person">&#x270d</g:link>
               </span>
             <div class="clear"></div>
           </div>
         </div>
   
           <!-- Overview  -->
-          <div id="overview" class="section">
+          <div id="overview" class="section" style="display:none;">
             <h3>Overview</h3>
             <g:if test="${overview == null}">
-              <div align="right">
+              <div>
                 <g:link controller="person" action="addOverview" params="['id':person.id]">Add Overview</g:link>
               </div>
             </g:if>
@@ -89,13 +91,14 @@
                 </span>
                 <span class="expsm-rt"  style="vertical-align:bottom;"></span>
                 <span class="expsm-rt"  style="vertical-align:bottom;">
-                  <g:link controller="resumeOverview" action="edit" id="${overview?.id}">Edit</g:link>
+                  <g:link controller="resumeOverview" action="edit" id="${overview?.id}">&#x270d</g:link>
                 </span>
                 <div class="clear"></div>
               </div>  <!-- closes div class="expsm"  -->
             </g:if>
           </div>  <!-- overview -->
 
+          <a name="skillsa"></a>
           <div id="skills" class="section" style="display:none;">
             <h3>Skills</h3>
             <div align="right">
@@ -111,10 +114,11 @@
           </div>
 
 
-          <!-- Experience Tab  -->
-          <div id="experience" class="section">
+          <!-- Experience Section  -->
+          <a name="experiencea"></a>
+          <div id="experience" class="section" style="display:none;">
             <h3>Experience</h3>
-            <div align="right">
+            <div>
               <g:link controller="experience" action="create" params="['person.id':person.id]">Add Experience</g:link>
             </div>
 
@@ -132,7 +136,7 @@
 
                   <div id="detail_${experience.id}" class="expdet" style="display:none;">
                     <p>${fieldValue(bean:experience, field:'summary')}</p>
-                   
+                  
                   </div>
                 </span>
                 <span class="expsm-rt">
@@ -142,7 +146,7 @@
                 </span>
                 <span class="expsm-rt"  style="vertical-align:bottom;"></span>
                 <span class="expsm-rt"  style="vertical-align:bottom;">
-                  <g:link controller="experience" action="edit" id="${experience.id}">Edit</g:link>
+                  <g:link controller="experience" action="edit" id="${experience.id}">&#x270d</g:link>
                 </span>
                 <div class="clear"></div>
               </div>  <!-- closes div class="expsm"  -->
@@ -152,35 +156,213 @@
           </div>
 
           <!-- Education Tab  -->
-          <div id="education" class="section">
+          <a name="educationa"></a>
+          <div id="education" class="section" style="display:none;">
             <h3>Education</h3>
-            <div style="padding-bottom:5px;" align="right">
+            <div>
               <g:link controller="education" action="create" params="['person.id':person.id]">Add Education</g:link>
             </div>
-            <div style="height:200px;">
-              <table>
-                <thead>
-                  <tr>
-                    <g:sortableColumn property="what" title="Education" />
-                    <g:sortableColumn property="date" title="Competed" />
-                  </tr>
-                </thead>
-                <tbody>
-                  <g:each var="education" in="${education}" status="i">
-                    <tr>
-                      <td><g:link controller="education" action="show" id="${education.id}">${education?.organization}</g:link></td>
-                      <td><g:formatDate format="yyyy-MM-dd" date="${education?.completed}" /></td>
-                    </tr>
-                  </g:each>
-                </tbody>
-              </table>
-          </div>
+              <g:each in="${education}" status="i" var="education">
+              <div class="expsm">
+                <span class="expsm-lt">
+                  <g:link controller="education" action="edit"
+                          id="${education?.id}">${education?.organization}
+                  </g:link>
+                </span>
+                <span class="expsm-rt">
+                  <g:formatDate format="MMM yyyy" date="${education?.completed}"/>
+                </span>
+                <span class="expsm-rt"  style="vertical-align:bottom;"></span>
+                <span class="expsm-rt"  style="vertical-align:bottom;">
+                  <g:link controller="education" action="edit" id="${education.id}">&#x270d</g:link>
+                </span>
+                <div class="clear"></div>
+              </div>  <!-- closes div class="expsm"  -->
+            </g:each>
+            <div class="clear"></div>
         </div>
 
-        <div id="references" class="section">
+          <a name="referencesa"></a>
+          <div id="references" class="section dim" style="display:none;">
           <h3>References</h3>
-
+          <p>Coming Soon...</p>
         </div>
+
+         <!-- Certifications Section  -->
+         <a name="certificationsa"></a>
+          <div id="certifications" class="section" style="display:none;">
+            <h3>Certifications</h3>
+            <div>
+              <g:link controller="certification" action="create" params="['personId':person.id]">Add Certification</g:link>
+            </div>
+
+            <g:each in="${certs}" status="i" var="cert">
+              <div class="expsm">
+                <span class="expsm-lt">
+                  <g:link controller="certification" action="edit"
+                          id="${cert.id}">${cert.name}
+                  </g:link>
+
+                </span>
+                <span class="expsm-rt">
+                  <g:formatDate format="MMM yyyy" date="${cert.certDate}"/>
+                </span>
+                 <span class="expsm-rt"  style="vertical-align:bottom;">              </span>
+                <span class="expsm-rt"  style="vertical-align:bottom;">
+                  <g:link controller="certification" action="edit" id="${cert.id}">&#x270d</g:link>
+                  <g:link controller="certification" action="delete" id="${cert.id}">&#x2717</g:link>
+                </span>
+               
+                <div class="clear"></div>
+              </div>  <!-- closes div class="expsm"  -->
+            </g:each>
+            <div class="clear"></div>
+          </div>
+
+         <!-- Publications Section  -->
+         <a name="publicationsa"></a>
+          <div id="publications" class="section dim" style="display:none;">
+            <h3>Publications</h3>
+            <div>
+              Coming Soon...
+              <!-- <g:link controller="publication" action="create" params="['personId':person.id]">Add Publication</g:link> -->
+            </div>
+          </div>
+
+          <!-- licenses Section  -->
+          <a name="licensesa"></a>
+          <div id="licenses" class="section" style="display:none;">
+            <h3>Licenses</h3>
+            <div>
+              <g:link controller="license" action="create" params="['personId':person.id]">Add License</g:link>
+            </div>
+            <g:each in="${licenses}" status="i" var="lic">
+              <div class="expsm">
+                <span class="expsm-lt">
+                  <g:link controller="license" action="edit"
+                          id="${lic.id}">${lic.licenseName}
+                  </g:link>
+
+                </span>
+                <span class="expsm-rt">
+                  <g:formatDate format="MMM yyyy" date="${lic.licensingDate}"/>
+                </span>
+                <span class="expsm-rt"  style="vertical-align:bottom;"></span>
+                <span class="expsm-rt"  style="vertical-align:bottom;">
+                  <g:link controller="license" action="edit" id="${lic.id}">&#x270d</g:link>
+                </span>
+                <div class="clear"></div>
+              </div>  <!-- closes div class="expsm"  -->
+            </g:each>
+            <div class="clear"></div>
+          </div>
+
+          <!-- Membership Section  -->
+          <a name="membershipsa"></a>
+          <div id="memberships" class="section" style="display:none;">
+            <h3>Memberships</h3>
+            <div>
+              <g:link controller="membership" action="create" params="['personId':person.id]">Add Membership</g:link>
+            </div>
+            <g:each in="${memberships}" status="i" var="memb">
+              <div class="expsm">
+                <span class="expsm-lt">
+                  <g:link controller="membership" action="edit"
+                          id="${memb.id}">${memb.organization}
+                  </g:link>
+
+                </span>
+                <span class="expsm-rt">
+                  <g:formatDate format="MMM yyyy" date="${memb.memberSince}"/>
+                </span>
+                <span class="expsm-rt"  style="vertical-align:bottom;"></span>
+                <span class="expsm-rt"  style="vertical-align:bottom;">
+                  <g:link controller="membership" action="edit" id="${memb.id}">&#x270d</g:link>
+                </span>
+                <div class="clear"></div>
+              </div>  <!-- closes div class="expsm"  -->
+            </g:each>
+            <div class="clear"></div>
+          </div>
+
+           <!-- Award Section  -->
+           <a name="awardsa"></a>
+          <div id="awards" class="section" style="display:none;">
+            <h3>Awards</h3>
+            <div>
+              <g:link controller="award" action="create" params="['personId':person.id]">Add Award</g:link>
+            </div>
+             <g:each in="${awards}" status="i" var="award">
+              <div class="expsm">
+                <span class="expsm-lt">
+                  <g:link controller="award" action="edit"
+                          id="${award.id}">
+                    <g:if test="${award.nominatedOnly == true}">
+                        Nominated for
+                    </g:if>
+                    <p>${award.awardName}</p> <p> ${award.awardingOrganization} </p>
+                  </g:link>
+                </span>
+
+                <span class="expsm-rt">
+                  <g:formatDate format="MMM yyyy" date="${award.dateAwarded}"/>
+                </span>
+                <span class="expsm-rt"  style="vertical-align:bottom;"></span>
+                <span class="expsm-rt"  style="vertical-align:bottom;">
+                  <g:link controller="award" action="edit" id="${award.id}">&#x270d</g:link>
+                </span>
+                <div class="clear"></div>
+              </div>  <!-- closes div class="expsm"  -->
+            </g:each>
+            <div class="clear"></div>
+          </div>
+
+            <!-- patent Section  -->
+            <a name="patentsa"></a>
+          <div id="patents" class="section" style="display:none;">
+            <h3>Patents</h3>
+            <div>
+              <g:link controller="patent" action="create" params="['personId':person.id]">Add Patent</g:link>
+            </div>
+            <g:each in="${patents}" status="i" var="pat">
+              <div class="expsm">
+                <span class="expsm-lt">
+                  <g:link controller="patent" action="edit"
+                          id="${pat.id}">${pat.title} - ${pat.number}
+                          <g:if test ="${pat.pending}"> (pending)</g:if>
+                  </g:link>
+
+                </span>
+                <span class="expsm-rt">
+                  <g:formatDate format="MMM yyyy" date="${pat.dateAwarded}"/>
+                </span>
+                <span class="expsm-rt"  style="vertical-align:bottom;"></span>
+                <span class="expsm-rt"  style="vertical-align:bottom;">
+                  <g:link controller="patent" action="edit" id="${pat.id}">&#x270d</g:link>
+                </span>
+                <div class="clear"></div>
+              </div>  <!-- closes div class="expsm"  -->
+            </g:each>
+            <div class="clear"></div>
+          </div>
+
+            <!-- involvement Section  -->
+            <a name="involvementa"></a>
+          <div id="involvement" class="section" style="display:none;">
+            <h3>Community Involvement</h3>
+            <div>
+              <g:link controller="involvement" action="create" params="['personId':person.id]">Add Involvement</g:link>
+            </div>
+          </div>
+
+           <!-- interest Section  -->
+           <a name="interestsa"></a>
+          <div id="interests" class="section" style="display:none;">
+            <h3>Interests</h3>
+            <div>
+              <g:link controller="interest" action="create" params="['personId':person.id]">Add Interest</g:link>
+            </div>
+          </div>
 
       </div>
     </div>
@@ -207,15 +389,33 @@
 
       function a() {}
 
-      function toggleDiv(indicator, theDiv) {
-        Effect.toggle(theDiv,'appear')
-        var ind = document.getElementById(indicator)
-        if (ind.innerHTML == '\u2734')
-          ind.innerHTML = ""
-        else
-          ind.innerHTML = "&#x2734"
+      var lastSection
+      var normal = "#fff"
+      var highlighted = "#94db5e"
+
+      function toggleDiv(theLink, theDiv) {
+        if (typeof lastSection == "undefined"){
+          lastSection = getLastSection("indCI", "contactInfo")
+        }
+        Effect.Fade(lastSection.dv, { queue: 'front' })
+        lastSection.li.style.backgroundColor = normal;
+        lastSection.active = false;
+
+        Effect.Appear(theDiv, { queue: 'end' })
+        lastSection = getLastSection(theLink, theDiv);
+        lastSection.li.style.backgroundColor = highlighted;
         return false
       }
+
+      function getLastSection(theLink, theDiv) {
+          var section = new Object();
+          section.name = theDiv;
+          section.dv = document.getElementById(section.name);
+          section.linkName = theLink;
+          section.li = document.getElementById(section.linkName);
+          return section;
+      }
+
       
     </script>
 </body>
