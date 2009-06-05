@@ -49,7 +49,7 @@
                                     <label for="dateAwarded">Date Awarded:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:awardInstance,field:'dateAwarded','errors')}">
-                                    <g:datePicker name="dateAwarded" value="${awardInstance?.dateAwarded}" precision="minute" noSelection="['':'']"></g:datePicker>
+                                    <richui:dateChooser name="dateAwarded"  format="MM/yyyy" />
                                 </td>
                             </tr> 
                         

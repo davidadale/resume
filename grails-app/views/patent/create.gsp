@@ -46,7 +46,7 @@
                                     <label for="dateAwarded">Date Awarded:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:patentInstance,field:'dateAwarded','errors')}">
-                                    <g:datePicker name="dateAwarded" value="${patentInstance?.dateAwarded}" precision="month" noSelection="['':'']"></g:datePicker>
+                                    <richui:dateChooser name="dateAwarded"  format="MM/yyyy" />
                                 </td>
                             </tr> 
                         

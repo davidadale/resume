@@ -7,12 +7,9 @@
         <title>Create Training</title>         
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">Training List</g:link></span>
-        </div>
+        
         <div class="body">
-            <h1>Create Training</h1>
+            <h2>Create Training</h2>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -49,7 +46,7 @@
                                     <label for="dateCompleted">Date Completed:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:trainingInstance,field:'dateCompleted','errors')}">
-                                    <g:datePicker name="dateCompleted" value="${trainingInstance?.dateCompleted}" precision="minute" noSelection="['':'']"></g:datePicker>
+                                    <richui:dateChooser name="dateCompleted"  format="MM/yyyy" />
                                 </td>
                             </tr> 
                         
@@ -84,7 +81,7 @@
                     </table>
                 </div>
                 <div class="buttons">
-                    <span class="button"><input class="save" type="submit" value="Create" /></span>
+                    <span class="button"><input class="save" type="submit" value="Save" /></span>
                 </div>
             </g:form>
         </div>

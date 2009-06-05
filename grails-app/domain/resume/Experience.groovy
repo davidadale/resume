@@ -33,9 +33,13 @@ class Experience implements Serializable, Comparable<Experience> {
     
     boolean ongoing
 
-    List highlights;
-    
-    static hasMany = [highlights:Highlight];
+    List highlights
+
+    List projects
+
+    List experiences
+
+    static hasMany = [highlights:Highlight, projects:Project, experiences:Experience];
     
     
     static constraints = {
@@ -47,6 +51,8 @@ class Experience implements Serializable, Comparable<Experience> {
         dateCompleted(nullable: true)
         ongoing(nullable: true)
         summary(nullable: true)
+        projects(nullable:true)
+        experiences(nullable:true)
     }
 
     static mapping = {

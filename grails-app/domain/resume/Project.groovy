@@ -15,11 +15,11 @@ class Project implements Serializable, Comparable<Project> {
 
     static SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy")
 
-    static belongsTo = Person
+    static belongsTo = Experience
 
     Person person
 
-	String companyName
+    String companyName
 
     String titleLine
     
@@ -31,9 +31,16 @@ class Project implements Serializable, Comparable<Project> {
 
     Date dateCompleted
 
+    List highlights
+
+    boolean ongoing
+    
+    static hasMany = [highlights:Highlight]
+    /*
     static constraints = {
         role(inList:["Business Analyst","Designer", "Developer", "Team Lead", "Project Manager"] )
     }
+    */
 
     static mapping = {
         columns{

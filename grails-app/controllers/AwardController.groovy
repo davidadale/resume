@@ -1,4 +1,6 @@
 
+import resume.*
+
 
 class AwardController {
     

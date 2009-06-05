@@ -75,10 +75,9 @@ class ProjectController {
     }
 
     def create = {
-        println params."person.id"
         def project = new Project()
         project.properties = params
-        return ['project':project]
+        return ['project':project,'expid':params.expid]
     }
 
     def save = {

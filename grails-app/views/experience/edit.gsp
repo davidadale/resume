@@ -32,7 +32,7 @@
 		   <div class="entryfield">
 			   <label class="entryLabel" for="dateStarted">Date Started:</label>
 			   <span class="fieldVal value ${hasErrors(bean:experience,field:'dateStarted','errors')}">
-				<g:datePicker precision="month" name="dateStarted" value="${experience?.dateStarted}" ></g:datePicker>
+                                <richui:dateChooser name="dateStarted"  format="MM/yyyy" />
 				 <span style="margin-left:5px;">
 				<g:checkBox id="ongoing" class="value"  name="ongoing" value="${experience?.ongoing}" 
 						onclick="Effect.toggle('dateComp','appear')"></g:checkBox>
@@ -49,8 +49,7 @@
 				Date Completed:
 			</span>
 		   	<span class="fieldVal value ${hasErrors(bean:experience,field:'dateCompleted','errors')}">
-				<g:datePicker precision="month" name="dateCompleted" value="${experience?.dateCompleted}" >
-			       </g:datePicker>
+                          <richui:dateChooser name="dateCompleted"  format="MM/yyyy" />
 			</span>								                   
 									
 		   </div>
@@ -111,10 +110,18 @@
                                </div>                      
                                    
 		           </div>
-		   </div>
-                <div class="buttons">
-                    <span class="button"><g:actionSubmit class="save" value="Save" /></span>
-                    <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
+		   
+
+                  <div class="clear" ></div>
+
+                     <h2>Sub Projects</h2>
+                     
+
+                  
+                  <div class="buttons">
+                      <span class="button"><g:actionSubmit class="save" value="Save" /></span>
+                      <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
+                  </div>
                 </div>
 		<div class="clear" style="height:5em;"> </div>
             </g:form>

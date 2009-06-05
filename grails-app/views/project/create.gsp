@@ -6,13 +6,8 @@
 	<resource:dateChooser />
   </head>
   <body>
-
-    <div class="nav">
-      <span class="menuButton"><a class="home" href="${createLinkTo(dir:'')}">Home</a></span>
-      <span class="menuButton"><g:link class="list" action="list">Project List</g:link></span>
-    </div>
     <div class="body">
-      <h1>Create Project</h1>
+      <h2>Create Project</h2>
       <g:if test="${flash.message}">
       <div class="message">${flash.message}</div>
       </g:if>
@@ -22,7 +17,8 @@
       </div>
       </g:hasErrors>
       <g:form controller="project" action="save" method="post" >
-      <g:hiddenField name="person.id" value="${project?.person?.id}"/>
+      <g:hiddenField name="expid" value="${expid}"/>
+
       <div class="dialog">
         <table>
           <tbody>
@@ -50,8 +46,11 @@
                 <label for="dateStarted">Started / Completed:</label>
               </td>
               <td valign="top" class="value ${hasErrors(bean:project,field:'dateStarted','errors')}">
-				<richui:dateChooser name="dateStarted" format="MM/dd/yyyy" />
-				<richui:dateChooser name="dateCompleted" format="MM/dd/yyyy" />				
+				<richui:dateChooser name="dateStarted"  format="MM/yyyy" />
+                                <span id="dateComp"><richui:dateChooser name="dateCompleted" format="MM/yyyy" /></span>
+                                <g:checkBox id="ongoing" class="value"  name="ongoing" value="${experience?.ongoing}"
+						onclick="Effect.toggle('dateComp','appear')"></g:checkBox>
+				<label for="ongoing">Ongoing</label>	
               </td>
             </tr>
 

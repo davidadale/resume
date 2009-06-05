@@ -49,6 +49,8 @@ class ExperienceController {
             experience = new Experience()
             experience.properties = params
         }
+        //if (experience.projects == null) experience.projects = new ArrayList();
+        
         return [ experience : experience, personid:params.personid ]
     }
 

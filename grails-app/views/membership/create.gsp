@@ -37,7 +37,7 @@
                                     <label for="memberSince">Member Since:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:membershipInstance,field:'memberSince','errors')}">
-                                    <g:datePicker name="memberSince" value="${membershipInstance?.memberSince}" precision="month" noSelection="['':'']"></g:datePicker>
+                                    <richui:dateChooser name="memberSince"  format="MM/yyyy" />
                                 </td>
                             </tr>                         
                             
