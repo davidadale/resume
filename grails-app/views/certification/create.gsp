@@ -5,6 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
         <title>Add Certification</title>
+        <resource:dateChooser />
     </head>
     <body>
         
@@ -38,7 +39,7 @@
                                     <label for="certDate">Cert Date:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:certificationInstance,field:'certDate','errors')}">
-                                    <richui:dateChooser name="certDate"  format="MM/yyyy" />
+                                    <richui:dateChooser name="certDate" format="MM/yyyy" />
                                 </td>
                             </tr> 
                         

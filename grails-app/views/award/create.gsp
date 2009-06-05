@@ -4,7 +4,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
-        <title>Create Award</title>         
+        <title>Create Award</title>
+        <resource:dateChooser />
     </head>
     <body>
        
