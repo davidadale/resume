@@ -6,7 +6,9 @@ class PatentController {
     def index = { redirect(action:list,params:params) }
 
     // the delete, save and update actions only accept POST requests
-    static allowedMethods = [delete:'POST', save:'POST', update:'POST']
+
+    /* Having delete accept GET method until we get the ajax delete call working... */
+    static allowedMethods = [delete:['POST', 'GET'], save:'POST', update:'POST']
 
     def list = {
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
@@ -18,7 +20,7 @@ class PatentController {
 
         if(!patentInstance) {
             flash.message = "Patent not found with id ${params.id}"
-            redirect(action:list)
+            redirect (action:"home", controller:"person")
         }
         else { return [ patentInstance : patentInstance ] }
     }
@@ -29,17 +31,15 @@ class PatentController {
             try {
                 patentInstance.delete(flush:true)
                 flash.message = "Patent ${params.id} deleted"
-                redirect(action:list)
             }
             catch(org.springframework.dao.DataIntegrityViolationException e) {
                 flash.message = "Patent ${params.id} could not be deleted"
-                redirect(action:show,id:params.id)
             }
         }
         else {
             flash.message = "Patent not found with id ${params.id}"
-            redirect(action:list)
         }
+        redirect (action:"home", controller:"person")
     }
 
     def edit = {
@@ -47,10 +47,10 @@ class PatentController {
 
         if(!patentInstance) {
             flash.message = "Patent not found with id ${params.id}"
-            redirect(action:list)
+            redirect (action:"home", controller:"person")
         }
         else {
-            return [ patentInstance : patentInstance ]
+            return [ patentInstance : patentInstance , 'personId': patentInstance.person.id]
         }
     }
 
@@ -69,26 +69,32 @@ class PatentController {
             patentInstance.properties = params
             if(!patentInstance.hasErrors() && patentInstance.save()) {
                 flash.message = "Patent ${params.id} updated"
-                redirect(action:show,id:patentInstance.id)
+                redirect (action:"home", controller:"person")
             }
             else {
-                render(view:'edit',model:[patentInstance:patentInstance])
+                render(view:'edit',model:[patentInstance:patentInstance , 'personId': patentInstance.person.id])
             }
         }
         else {
             flash.message = "Patent not found with id ${params.id}"
-            redirect(action:list)
+            redirect (action:"home", controller:"person")
         }
     }
 
     def create = {
         def patentInstance = new Patent()
         patentInstance.properties = params
-        return ['patentInstance':patentInstance]
+        return ['patentInstance':patentInstance , 'personId': params.personId]
     }
 
     def save = {
+        def person = Person.get(params.personId)
+        if (person == null) {
+            flash.message = "While saving license: Unable to locate person with id " + params.personId
+            redirect (action:"home", controller:"person")
+        }
         def patentInstance = new Patent(params)
+        person.addToPatents(patentInstance)
         if(!patentInstance.hasErrors() && patentInstance.save()) {
             flash.message = "Patent ${patentInstance.id} created"
             redirect(action:show,id:patentInstance.id)

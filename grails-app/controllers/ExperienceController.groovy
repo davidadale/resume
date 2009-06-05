@@ -10,7 +10,9 @@ class ExperienceController {
     def index = { redirect(action:list,params:params) }
 
     // the delete, save and update actions only accept POST requests
-    def allowedMethods = [delete:'POST', save:'POST', update:'POST']
+
+    /* Having delete accept GET method until we get the ajax delete call working... */
+    static allowedMethods = [delete:['POST', 'GET'], save:'POST', update:'POST']
 
     def list = {
         if(!params.max) params.max = 10

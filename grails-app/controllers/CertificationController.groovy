@@ -6,7 +6,9 @@ class CertificationController {
     def index = { redirect(action:list,params:params) }
 
     // the delete, save and update actions only accept POST requests
-    static allowedMethods = [save:'POST', update:'POST']
+
+    /* Having delete accept GET method until we get the ajax delete call working... */
+    static allowedMethods = [delete:['POST', 'GET'], save:'POST', update:'POST']
 
     def list = {
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)

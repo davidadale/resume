@@ -6,7 +6,9 @@ class LicenseController {
     def index = { redirect(action:list,params:params) }
 
     // the delete, save and update actions only accept POST requests
-    static allowedMethods = [delete:'POST', save:'POST', update:'POST']
+    
+    /* Having delete accept GET method until we get the ajax delete call working... */
+    static allowedMethods = [delete:['POST', 'GET'], save:'POST', update:'POST']
 
     def list = {
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
@@ -69,7 +71,7 @@ class LicenseController {
             licenseInstance.properties = params
             if(!licenseInstance.hasErrors() && licenseInstance.save()) {
                 flash.message = "License ${params.id} updated"
-                redirect(action:show,id:licenseInstance.id)
+                redirect(controller:"person", action:"home")
             }
             else {
                 render(view:'edit',model:[licenseInstance:licenseInstance])
@@ -88,7 +90,7 @@ class LicenseController {
     }
 
     def save = {
-         def person = Person.get(params.personId)
+        def person = Person.get(params.personId)
         if (person == null) {
             flash.message = "While saving license: Unable to locate person with id " + params.personId
             redirect (action:"home", controller:"person")

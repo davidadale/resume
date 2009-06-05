@@ -7,10 +7,6 @@
         <title>Create Membership</title>         
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">Membership List</g:link></span>
-        </div>
         <div class="body">
             <h2>Membership</h2>
             <g:if test="${flash.message}">
@@ -22,7 +18,7 @@
             </div>
             </g:hasErrors>
             <g:form action="save" method="post" >
-                <g:hiddenField name="person.id" value="${personId}" />
+                <g:hiddenField name="personId" value="${personId}" />
                 <div class="dialog">
                     <table>
                         <tbody>
@@ -41,7 +37,7 @@
                                     <label for="memberSince">Member Since:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:membershipInstance,field:'memberSince','errors')}">
-                                    <g:datePicker name="memberSince" value="${membershipInstance?.memberSince}" precision="minute" noSelection="['':'']"></g:datePicker>
+                                    <g:datePicker name="memberSince" value="${membershipInstance?.memberSince}" precision="month" noSelection="['':'']"></g:datePicker>
                                 </td>
                             </tr>                         
                             

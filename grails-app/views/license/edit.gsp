@@ -21,7 +21,7 @@
             <g:form method="post" >
                 <input type="hidden" name="id" value="${licenseInstance?.id}" />
                 <input type="hidden" name="version" value="${licenseInstance?.version}" />
-                <g:hiddenField name="person.id" value="${personId}" />
+                <g:hiddenField name="personId" value="${personId}" />
                 <div class="dialog">
                     <table>
                         <tbody>
@@ -48,8 +48,7 @@
                     </table>
                 </div>
                 <div class="buttons">
-                    <span class="button"><g:actionSubmit class="save" value="Update" /></span>
-                    <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
+                    <span class="button"><g:actionSubmit class="save" value="Save" /></span>
                 </div>
             </g:form>
         </div>

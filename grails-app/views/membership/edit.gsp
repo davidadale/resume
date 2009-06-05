@@ -7,11 +7,7 @@
         <title>Edit Membership</title>
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">Membership List</g:link></span>
-            <span class="menuButton"><g:link class="create" action="create">New Membership</g:link></span>
-        </div>
+        
         <div class="body">
             <h2>Membership</h2>
             <g:if test="${flash.message}">
@@ -25,7 +21,7 @@
             <g:form method="post" >
                 <input type="hidden" name="id" value="${membershipInstance?.id}" />
                 <input type="hidden" name="version" value="${membershipInstance?.version}" />
-                <g:hiddenField name="person.id" value="${personId}" />
+                <g:hiddenField name="personId" value="${personId}" />
                 <div class="dialog">
                     <table>
                         <tbody>

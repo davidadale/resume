@@ -7,10 +7,7 @@
         <title>Create Award</title>         
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">Award List</g:link></span>
-        </div>
+       
         <div class="body">
             <h2>Add Award</h2>
             <g:if test="${flash.message}">
@@ -22,7 +19,7 @@
             </div>
             </g:hasErrors>
             <g:form action="save" method="post" >
-              <g:hiddenField name="person.id" value="${personId}" />
+              <g:hiddenField name="personId" value="${personId}" />
 
               <div class="dialog">
                     <table>

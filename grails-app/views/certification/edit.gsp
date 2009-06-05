@@ -25,7 +25,7 @@
                         <tbody>
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="name">Name:</label>
+                                    <label for="name">Certification:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:certificationInstance,field:'name','errors')}">
                                     <input type="text" id="name" name="name" value="${fieldValue(bean:certificationInstance,field:'name')}"/>

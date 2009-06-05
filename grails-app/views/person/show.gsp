@@ -21,20 +21,20 @@
                 <li id="indXp"><a href="" onclick="javascript:return toggleDiv('indXp', 'experience');">Experience </a></li>
                 <li id="indEd"><a href="" onclick="javascript:return toggleDiv('indEd', 'education');">Education </a></li>
                 <li id="indRef"><a href="" onclick="javascript:return toggleDiv('indRef', 'references');">References</a></li>
-                <li><a href="" onclick="javascript:toggleQualsLink();return false;">
-                    <span id="quals_header">&#x25B6;</span>&nbsp;Qualifications </a>
-                  <ul id="quals" style="display:none;">
-                    <li id="indCert"><a href="" onclick="javascript:return toggleDiv('indCert', 'certifications');">Certifications</a></li>
-                    <li id="indPub"><a href="" onclick="javascript:return toggleDiv('indPub', 'publications');">Publications</a></li>
-                    <li id="indLic"><a href="" onclick="javascript:return toggleDiv('indLic', 'licenses');">Licenses</a></li>
-                    <li id="indMem"><a href="" onclick="javascript:return toggleDiv('indMem', 'memberships');">Memberships</a></li>
-                    <li id="indAwd"><a href="" onclick="javascript:return toggleDiv('indAwd', 'awards');">Awards</a></li>
-                    <li id="indPat"><a href="" onclick="javascript:return toggleDiv('indPat', 'patents');">Patents</a></li>
-                    <li id="indInv"><a href="" onclick="javascript:return toggleDiv('indInv', 'involvement');">Community Involvement</a></li>
-                    <li id="indInt"><a href="" onclick="javascript:return toggleDiv('indInt', 'interests');">Interests/Sites</a></li>
-                  </ul>
-                </li>
-        </ul>
+
+         </ul><br>
+          <ul id="quals" >
+            <li id="indCert"><a href="" onclick="javascript:return toggleDiv('indCert', 'certifications');">Certifications</a></li>
+            <li id="indPub"><a href="" onclick="javascript:return toggleDiv('indPub', 'publications');">Publications</a></li>
+            <li id="indLic"><a href="" onclick="javascript:return toggleDiv('indLic', 'licenses');">Licenses</a></li>
+            <li id="indMem"><a href="" onclick="javascript:return toggleDiv('indMem', 'memberships');">Memberships</a></li>
+            <li id="indAwd"><a href="" onclick="javascript:return toggleDiv('indAwd', 'awards');">Awards</a></li>
+            <li id="indPat"><a href="" onclick="javascript:return toggleDiv('indPat', 'patents');">Patents</a></li>
+            <li id="indInv"><a href="" onclick="javascript:return toggleDiv('indInv', 'involvement');">Community Involvement</a></li>
+            <li id="indInt"><a href="" onclick="javascript:return toggleDiv('indInt', 'interests');">Interests/Sites</a></li>
+          </ul>
+                
+        
       </div>
 
 
@@ -147,6 +147,7 @@
                 <span class="expsm-rt"  style="vertical-align:bottom;"></span>
                 <span class="expsm-rt"  style="vertical-align:bottom;">
                   <g:link controller="experience" action="edit" id="${experience.id}">&#x270d</g:link>
+                  <g:link controller="experience" action="delete" id="${experience.id}">&#x2717</g:link>
                 </span>
                 <div class="clear"></div>
               </div>  <!-- closes div class="expsm"  -->
@@ -250,6 +251,7 @@
                 <span class="expsm-rt"  style="vertical-align:bottom;"></span>
                 <span class="expsm-rt"  style="vertical-align:bottom;">
                   <g:link controller="license" action="edit" id="${lic.id}">&#x270d</g:link>
+                  <g:link controller="license" action="delete" id="${lic.id}">&#x2717</g:link>
                 </span>
                 <div class="clear"></div>
               </div>  <!-- closes div class="expsm"  -->
@@ -278,6 +280,7 @@
                 <span class="expsm-rt"  style="vertical-align:bottom;"></span>
                 <span class="expsm-rt"  style="vertical-align:bottom;">
                   <g:link controller="membership" action="edit" id="${memb.id}">&#x270d</g:link>
+                  <g:link controller="membership" action="delete" id="${memb.id}">&#x2717</g:link>
                 </span>
                 <div class="clear"></div>
               </div>  <!-- closes div class="expsm"  -->
@@ -310,6 +313,7 @@
                 <span class="expsm-rt"  style="vertical-align:bottom;"></span>
                 <span class="expsm-rt"  style="vertical-align:bottom;">
                   <g:link controller="award" action="edit" id="${award.id}">&#x270d</g:link>
+                  <g:link controller="award" action="delete" id="${award.id}">&#x2717</g:link>
                 </span>
                 <div class="clear"></div>
               </div>  <!-- closes div class="expsm"  -->
@@ -339,6 +343,7 @@
                 <span class="expsm-rt"  style="vertical-align:bottom;"></span>
                 <span class="expsm-rt"  style="vertical-align:bottom;">
                   <g:link controller="patent" action="edit" id="${pat.id}">&#x270d</g:link>
+                  <g:link controller="patent" action="delete" id="${pat.id}">&#x2717</g:link>
                 </span>
                 <div class="clear"></div>
               </div>  <!-- closes div class="expsm"  -->
@@ -348,20 +353,20 @@
 
             <!-- involvement Section  -->
             <a name="involvementa"></a>
-          <div id="involvement" class="section" style="display:none;">
+          <div id="involvement" class="section dim" style="display:none;">
             <h3>Community Involvement</h3>
-            <div class="buttons">
-              <g:link controller="involvement" action="create" params="['personId':person.id]">Add Involvement</g:link>
-            </div>
+            <p>
+              Coming Soon...
+            </p>
           </div>
 
            <!-- interest Section  -->
            <a name="interestsa"></a>
-          <div id="interests" class="section" style="display:none;">
+          <div id="interests" class="section dim" style="display:none;">
             <h3>Interests</h3>
-            <div>
-              <g:link controller="interest" action="create" params="['personId':person.id]">Add Interest</g:link>
-            </div>
+            <p>
+              Coming Soon...
+            </p>
           </div>
 
       </div>

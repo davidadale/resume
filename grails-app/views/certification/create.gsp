@@ -23,7 +23,16 @@
                 <div class="dialog">
                     <table>
                         <tbody>
-                        
+
+                          <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="name">Certification:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:certificationInstance,field:'name','errors')}">
+                                    <input type="text" id="name" name="name" value="${fieldValue(bean:certificationInstance,field:'name')}"/>
+                                </td>
+                            </tr>
+                            
                             <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="certDate">Cert Date:</label>
@@ -33,14 +42,7 @@
                                 </td>
                             </tr> 
                         
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="name">Name:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:certificationInstance,field:'name','errors')}">
-                                    <input type="text" id="name" name="name" value="${fieldValue(bean:certificationInstance,field:'name')}"/>
-                                </td>
-                            </tr> 
+                            
                         
                         </tbody>
                     </table>

@@ -6,7 +6,9 @@ class MembershipController {
     def index = { redirect(action:list,params:params) }
 
     // the delete, save and update actions only accept POST requests
-    static allowedMethods = [delete:'POST', save:'POST', update:'POST']
+
+    /* Having delete accept GET method until we get the ajax delete call working... */
+    static allowedMethods = [delete:['POST', 'GET'], save:'POST', update:'POST']
 
     def list = {
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
@@ -18,7 +20,7 @@ class MembershipController {
 
         if(!membershipInstance) {
             flash.message = "Membership not found with id ${params.id}"
-            redirect(action:list)
+            redirect (action:"home", controller:"person")
         }
         else { return [ membershipInstance : membershipInstance ] }
     }
@@ -29,16 +31,16 @@ class MembershipController {
             try {
                 membershipInstance.delete(flush:true)
                 flash.message = "Membership ${params.id} deleted"
-                redirect(action:list)
+                redirect (action:"home", controller:"person")
             }
             catch(org.springframework.dao.DataIntegrityViolationException e) {
                 flash.message = "Membership ${params.id} could not be deleted"
-                redirect(action:show,id:params.id)
+                redirect (action:"home", controller:"person")
             }
         }
         else {
             flash.message = "Membership not found with id ${params.id}"
-            redirect(action:list)
+            redirect (action:"home", controller:"person")
         }
     }
 
@@ -47,10 +49,10 @@ class MembershipController {
 
         if(!membershipInstance) {
             flash.message = "Membership not found with id ${params.id}"
-            redirect(action:list)
+            redirect (action:"home", controller:"person")
         }
         else {
-            return [ membershipInstance : membershipInstance ]
+            return [ membershipInstance : membershipInstance, "personId":membershipInstance.person.id ]
         }
     }
 
@@ -69,26 +71,32 @@ class MembershipController {
             membershipInstance.properties = params
             if(!membershipInstance.hasErrors() && membershipInstance.save()) {
                 flash.message = "Membership ${params.id} updated"
-                redirect(action:show,id:membershipInstance.id)
+                redirect (action:"home", controller:"person")
             }
             else {
-                render(view:'edit',model:[membershipInstance:membershipInstance])
+                render(view:'edit',model:[membershipInstance:membershipInstance, "personId":membershipInstance.person.id])
             }
         }
         else {
             flash.message = "Membership not found with id ${params.id}"
-            redirect(action:list)
+            redirect (action:"home", controller:"person")
         }
     }
 
     def create = {
         def membershipInstance = new Membership()
         membershipInstance.properties = params
-        return ['membershipInstance':membershipInstance]
+        return ['membershipInstance':membershipInstance, "personId":params.personId]
     }
 
     def save = {
+        def person = Person.get(params.personId)
+        if (person == null) {
+            flash.message = "While saving license: Unable to locate person with id " + params.personId
+            redirect (action:"home", controller:"person")
+        }
         def membershipInstance = new Membership(params)
+        person.addToMemberships(membershipInstance)
         if(!membershipInstance.hasErrors() && membershipInstance.save()) {
             flash.message = "Membership ${membershipInstance.id} created"
             redirect(action:show,id:membershipInstance.id)

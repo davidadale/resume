@@ -7,12 +7,8 @@
         <title>Create Patent</title>         
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">Patent List</g:link></span>
-        </div>
         <div class="body">
-            <h1>Create Patent</h1>
+            <h2>Create Patent</h2>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -22,6 +18,7 @@
             </div>
             </g:hasErrors>
             <g:form action="save" method="post" >
+              <g:hiddenField name="personId" value="${personId}" />
                 <div class="dialog">
                     <table>
                         <tbody>
@@ -49,7 +46,7 @@
                                     <label for="dateAwarded">Date Awarded:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:patentInstance,field:'dateAwarded','errors')}">
-                                    <g:datePicker name="dateAwarded" value="${patentInstance?.dateAwarded}" precision="minute" noSelection="['':'']"></g:datePicker>
+                                    <g:datePicker name="dateAwarded" value="${patentInstance?.dateAwarded}" precision="month" noSelection="['':'']"></g:datePicker>
                                 </td>
                             </tr> 
                         
@@ -89,20 +86,13 @@
                                 </td>
                             </tr> 
                         
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="person">Person:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:patentInstance,field:'person','errors')}">
-                                    <g:select optionKey="id" from="${resume.Person.list()}" name="person.id" value="${patentInstance?.person?.id}" ></g:select>
-                                </td>
-                            </tr> 
+                           
                         
                         </tbody>
                     </table>
                 </div>
                 <div class="buttons">
-                    <span class="button"><input class="save" type="submit" value="Create" /></span>
+                    <span class="button"><input class="save" type="submit" value="Save" /></span>
                 </div>
             </g:form>
         </div>

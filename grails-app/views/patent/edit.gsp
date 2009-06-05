@@ -7,13 +7,9 @@
         <title>Edit Patent</title>
     </head>
     <body>
-        <div class="nav">
-            <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
-            <span class="menuButton"><g:link class="list" action="list">Patent List</g:link></span>
-            <span class="menuButton"><g:link class="create" action="create">New Patent</g:link></span>
-        </div>
+       
         <div class="body">
-            <h1>Edit Patent</h1>
+            <h2>Patent</h2>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -25,6 +21,7 @@
             <g:form method="post" >
                 <input type="hidden" name="id" value="${patentInstance?.id}" />
                 <input type="hidden" name="version" value="${patentInstance?.version}" />
+                <g:hiddenField name="personId" value="${personId}" />
                 <div class="dialog">
                     <table>
                         <tbody>
@@ -52,7 +49,7 @@
                                     <label for="dateAwarded">Date Awarded:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:patentInstance,field:'dateAwarded','errors')}">
-                                    <g:datePicker name="dateAwarded" value="${patentInstance?.dateAwarded}" precision="minute" noSelection="['':'']"></g:datePicker>
+                                    <g:datePicker name="dateAwarded" value="${patentInstance?.dateAwarded}" precision="month" noSelection="['':'']"></g:datePicker>
                                 </td>
                             </tr> 
                         
@@ -92,21 +89,12 @@
                                 </td>
                             </tr> 
                         
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="person">Person:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:patentInstance,field:'person','errors')}">
-                                    <g:select optionKey="id" from="${resume.Person.list()}" name="person.id" value="${patentInstance?.person?.id}" ></g:select>
-                                </td>
-                            </tr> 
-                        
+                           
                         </tbody>
                     </table>
                 </div>
                 <div class="buttons">
-                    <span class="button"><g:actionSubmit class="save" value="Update" /></span>
-                    <span class="button"><g:actionSubmit class="delete" onclick="return confirm('Are you sure?');" value="Delete" /></span>
+                    <span class="button"><g:actionSubmit class="save" value="Save" /></span>
                 </div>
             </g:form>
         </div>
