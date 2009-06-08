@@ -40,8 +40,6 @@
 
     <div class="dialog flL">
 
-
-
         <div id="contactInfo" class="section">
           <h3>Contact Information</h3>
           <div class="expsm">
@@ -134,10 +132,6 @@
                   <a href="" class="decN" id="details_${experience.id}" title="Show/Hide Details"
                      onclick="Effect.toggle('detail_${experience.id}','appear');invertTriangle($('details_${experience.id}'));return false;">&#x25B6;</a>
 
-                  <div id="detail_${experience.id}" class="expdet" style="display:none;">
-                    <p>${fieldValue(bean:experience, field:'summary')}</p>
-                  
-                  </div>
                 </span>
                 <span class="expsm-rt">
                   ${fieldValue(bean:experience, field:'formattedStartDate')}
@@ -150,6 +144,10 @@
                   <g:link controller="experience" action="delete" id="${experience.id}">&#x2717</g:link>
                 </span>
                 <div class="clear"></div>
+                <div id="detail_${experience.id}" class="expdet" style="display:none;">
+                    <p>${fieldValue(bean:experience, field:'summary')}</p>
+
+                </div>
               </div>  <!-- closes div class="expsm"  -->
             </g:each>
             <div class="clear"></div>
@@ -395,6 +393,9 @@
       function a() {}
 
       var activeSection
+
+      // this was just to get something to show quickly, real implementation
+      // should probably just change CSS class instead.
       var normal = "#fff"
       var highlighted = "#94db5e"
 
