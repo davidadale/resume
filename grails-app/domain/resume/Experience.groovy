@@ -37,9 +37,9 @@ class Experience implements Serializable, Comparable<Experience> {
 
     List projects
 
-    List experiences
+   // List experiences
 
-    static hasMany = [highlights:Highlight, projects:Project, experiences:Experience];
+    static hasMany = [highlights:Highlight, projects:Project/* experiences:Experience*/];
     
     
     static constraints = {
@@ -52,7 +52,6 @@ class Experience implements Serializable, Comparable<Experience> {
         ongoing(nullable: true)
         summary(nullable: true)
         projects(nullable:true)
-        experiences(nullable:true)
     }
 
     static mapping = {

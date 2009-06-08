@@ -44,7 +44,8 @@ class Person implements Serializable, Comparable<Person>{
         certs:Certification,
         awards:Award,
         licenses:License,
-        memberships:Membership
+        memberships:Membership,
+        patents:Patent
     ]
 
     static transients = ["fullName"]

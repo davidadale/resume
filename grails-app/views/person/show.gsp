@@ -266,7 +266,7 @@
             <div class="buttons">
               <g:link controller="membership" action="create" params="['personId':person.id]">Add Membership</g:link>
             </div>
-            <g:each in="${memberships}" status="i" var="memb">
+            <g:each in="${person?.memberships}" status="i" var="memb">
               <div class="expsm">
                 <span class="expsm-lt">
                   <g:link controller="membership" action="edit"
@@ -295,7 +295,7 @@
             <div class="buttons">
               <g:link controller="award" action="create" params="['personId':person.id]">Add Award</g:link>
             </div>
-             <g:each in="${awards}" status="i" var="award">
+             <g:each in="${person?.awards}" status="i" var="award">
               <div class="expsm">
                 <span class="expsm-lt">
                   <g:link controller="award" action="edit"
@@ -328,7 +328,7 @@
             <div class="buttons">
               <g:link controller="patent" action="create" params="['personId':person.id]">Add Patent</g:link>
             </div>
-            <g:each in="${patents}" status="i" var="pat">
+            <g:each in="${person?.patents}" status="i" var="pat">
               <div class="expsm">
                 <span class="expsm-lt">
                   <g:link controller="patent" action="edit"
@@ -394,25 +394,25 @@
 
       function a() {}
 
-      var lastSection
+      var activeSection
       var normal = "#fff"
       var highlighted = "#94db5e"
 
       function toggleDiv(theLink, theDiv) {
-        if (typeof lastSection == "undefined"){
-          lastSection = getLastSection("indCI", "contactInfo")
+        if (typeof activeSection == "undefined"){
+          activeSection = getSection("indCI", "contactInfo")
         }
-        Effect.Fade(lastSection.dv, { queue: 'front' })
-        lastSection.li.style.backgroundColor = normal;
-        lastSection.active = false;
+        Effect.Fade(activeSection.dv, { queue: 'front', duration:0.5 })
+        activeSection.li.style.backgroundColor = normal;
+        activeSection.active = false;
 
-        Effect.Appear(theDiv, { queue: 'end' })
-        lastSection = getLastSection(theLink, theDiv);
-        lastSection.li.style.backgroundColor = highlighted;
+        Effect.Appear(theDiv, { queue: 'end', duration:0.5 })
+        activeSection = getSection(theLink, theDiv);
+        activeSection.li.style.backgroundColor = highlighted;
         return false
       }
 
-      function getLastSection(theLink, theDiv) {
+      function getSection(theLink, theDiv) {
           var section = new Object();
           section.name = theDiv;
           section.dv = document.getElementById(section.name);
