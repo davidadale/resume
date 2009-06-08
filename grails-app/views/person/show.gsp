@@ -146,6 +146,11 @@
                 <div class="clear"></div>
                 <div id="detail_${experience.id}" class="expdet" style="display:none;">
                     <p>${fieldValue(bean:experience, field:'summary')}</p>
+                    <ul>
+                      <g:each in="${experience?.highlights}" var="highlight">
+                        <li> ${highlight?.text}   </li>
+                      </g:each>
+                    </ul>
 
                 </div>
               </div>  <!-- closes div class="expsm"  -->

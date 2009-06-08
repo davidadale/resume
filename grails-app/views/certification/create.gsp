@@ -39,7 +39,7 @@
                                     <label for="certDate">Cert Date:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:certificationInstance,field:'certDate','errors')}">
-                                    <richui:dateChooser name="certDate" format="MM/yyyy" />
+                                    <g:datePicker name="certDate" precision="month"  noSelection="['':'-Select-']"  />
                                 </td>
                             </tr> 
                         

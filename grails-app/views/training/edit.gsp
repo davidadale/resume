@@ -49,7 +49,7 @@
                                     <label for="dateCompleted">Date Completed:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:trainingInstance,field:'dateCompleted','errors')}">
-                                    <richui:dateChooser name="dateCompleted"  format="MM/yyyy" />
+                                    <g:datePicker name="dateCompleted" precision="month"  noSelection="['':'-Select-']"  />
                                 </td>
                             </tr> 
                         

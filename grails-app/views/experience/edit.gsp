@@ -33,7 +33,7 @@
 		   <div class="entryfield">
 			   <label class="entryLabel" for="dateStarted">Date Started:</label>
 			   <span class="fieldVal value ${hasErrors(bean:experience,field:'dateStarted','errors')}">
-                                <richui:dateChooser name="dateStarted"  format="MM/yyyy" />
+                                <g:datePicker name="dateStarted" precision="month"  noSelection="['':'-Select-']"  />
 				 <span style="margin-left:5px;">
 				<g:checkBox id="ongoing" class="value"  name="ongoing" value="${experience?.ongoing}" 
 						onclick="Effect.toggle('dateComp','appear')"></g:checkBox>
@@ -50,7 +50,7 @@
 				Date Completed:
 			</span>
 		   	<span class="fieldVal value ${hasErrors(bean:experience,field:'dateCompleted','errors')}">
-                          <richui:dateChooser name="dateCompleted"  format="MM/yyyy" />
+                          <g:datePicker name="dateCompleted" precision="month"  noSelection="['':'-Select-']" />
 			</span>								                   
 									
 		   </div>

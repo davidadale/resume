@@ -38,7 +38,7 @@
                                     <label for="licensingDate">Licensing Date:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:licenseInstance,field:'licensingDate','errors')}">
-                                    <richui:dateChooser name="licensingDate"  format="MM/yyyy" />
+                                    <g:datePicker name="licensingDate" precision="month"  noSelection="['':'-Select-']"  />
                                 </td>
                             </tr>                         
                            
