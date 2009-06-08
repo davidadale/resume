@@ -80,8 +80,8 @@
 			   </span>     
                    </div>  
 		   <div class="clear" ></div>
-		   <h2>Highlights</h2>
-                   <p><g:link action="addHighlight" onclick="Effect.Appear('newValueBlock');return false;">New</g:link></p>
+		   <h2>Higphlights</h2>
+                   <p id="new_highlight_lnk"><g:link action="addHighlight" onclick="Effect.Appear('newValueBlock');Effect.Fade('new_highlight_lnk');return false;">New</g:link></p>
                   
 		  
                    <g:each in="${experience.highlights}" status="i" var="item">
